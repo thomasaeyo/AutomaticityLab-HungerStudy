@@ -1,0 +1,23 @@
+<template name="Admin">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 com-sm-offset-1">
+      <h1>Admin Data</h1>
+      <div class="download-json-container">
+      <button class="btn btn-default btn-primary btn-large download-response-btn">Download Data</button>
+      </div>
+      <div class="show-responses-container">
+        <button class="btn btn-default btn-success btn-large show-response-btn">Show Raw Responses</button>
+      </div>
+      <div class="response-block">
+        {{#each responses}}
+          <div class="response">
+            <h4>{{username}}</h4>
+            {{parseResponse this}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+</template>

@@ -1,0 +1,37 @@
+html, body {
+  font-size: 17px;
+}
+
+.center {
+  text-align: center;
+}
+
+p {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+strong {
+  margin-bottom: 10px;
+}
+
+.btn-default {
+  margin-bottom: 15px;
+}
+
+.text-indent {
+  /*text-indent: 20px;*/
+  margin-left: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-italic {
+  font-style: italic;
+}

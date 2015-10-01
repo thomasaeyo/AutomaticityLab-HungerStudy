@@ -5,3 +5,17 @@
 .bottom-big {
   margin-bottom: 20px;
 }
+
+.form-group {
+	margin-bottom: 30px;
+}
+
+.survey-intro {
+	margin-bottom: 30px;
+}
+
+.error {
+	color: red;
+	margin-bottom: 30px;
+	display: none;
+}

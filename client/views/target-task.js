@@ -7,21 +7,6 @@ var BLANK_DELAY = 1000;
 var READY_DELAY = 300;
 var PRIME_DELAY = 150;
 
-
-/**
-* Randomize array element order in-place.
-* Using Fisher-Yates shuffle algorithm.
-*/
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-
 realTargets = ["cup",
               "bottle",
               "glass",
@@ -88,6 +73,29 @@ nonsenseTargets = ["ans",
                   "qengs",
                   "quinle"];
 
+PRACTICE_TRIALS = [
+  {
+    target: "point",
+    prime: "water",
+    correctResponse: "d",
+  },
+  {
+    target: "alfen",
+    prime: "water",
+    correctResponse: "k",
+  },
+  {
+    target: "display",
+    prime: "pencil",
+    correctResponse: "d",
+  },
+  {
+    target: "moem",
+    prime: "pencil",
+    correctResponse: "k",
+  },
+];
+
 if (Meteor.isClient) {
   var _checkIfCorrect = function (keyPressed, correctResponse) {
     return correctResponse === keyPressed;
@@ -97,8 +105,18 @@ if (Meteor.isClient) {
     $(window).off('keyup');
 
     if (TRIALS.length > 0) {
+    // if (PRACTICE_TRIALS.length > 0) {
+      var trial;
+      var blockType;
 
-      var trial = TRIALS.pop();
+      if (PRACTICE_TRIALS.length > 0) {
+        trial = PRACTICE_TRIALS.pop();
+        blockType = "PracticeBlock";
+
+      } else {
+        trial = TRIALS.pop();
+        blockType = "Block1";
+      }
 
       $('.stimuli.target.active').removeClass('active').hide();
       $('.stimuli.target').text(trial.target);
@@ -128,7 +146,7 @@ if (Meteor.isClient) {
               var keyPressed = e.keyCode === 68 ? "d" : "k";
 
               var taskResponse = {
-                block: "Block1",
+                block: blockType,
                 prime: trial.prime,
                 target: trial.target,
                 responseTime: timeDiff,
@@ -207,7 +225,7 @@ if (Meteor.isClient) {
         trials.push(trialObj2);
       }
 
-      TRIALS = shuffleArray(trials);
+      TRIALS = shuffle(trials);
 
       // Finally, we are ready to listen to events
       $(window).on('keyup', function (e) {

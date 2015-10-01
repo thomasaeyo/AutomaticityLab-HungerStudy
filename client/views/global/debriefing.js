@@ -1,60 +1,74 @@
 Template.Debriefing1.onRendered(function() {
-  var secondTargetTaskResults = Session.get("currentTargetTaskResults");
+  var TargetTaskResults = Session.get("currentTargetTaskResults");
 
   Helpers.updateResponse({
-    secondTargetTaskResults: secondTargetTaskResults
+    TargetTaskResults: TargetTaskResults
   });
 });
 
 Template.Debriefing1.events({
   "click .go-to-debrief2": function (e) {
+    e.preventDefault();
+    var isNativeSpeaker = $('input[name="is_native_speaker"]:checked').val();
+    var nativeSpeakerAge = isNativeSpeaker === "yes" ? $('input[name="native_speaker_age"]').val() : "";
     var age = $('input[name="age"]').val();
-    var sex = $('input[name="sex"]').val();
-    var attention1 = $('input[name="attention1"]:checked').val();
-    var attention2 = $('input[name="attention2"]:checked').val();
-    var focused1 = $('input[name="focused1"]:checked').val();
-    var focused2 = $('input[name="focused2"]:checked').val();
-    var motivated = $('input[name="motivated"]:checked').val();
+    var gender = $('input[name="gender"]:checked').val();
 
-    var partialAnswers = {
-      age: age,
-      sex: sex,
-      attention1: attention1,
-      attention2: attention2,
-      focused1: focused1,
-      focused2: focused2,
-      motivated: motivated
-    };
+    if (isNativeSpeaker === undefined || age === "" || gender === undefined) {
+      alert("Please answer all the starred questions.");
+      return;
+    } else {
 
-    Session.set("debriefing", partialAnswers);
+        if (isNativeSpeaker === "yes" && nativeSpeakerAge === "") {
+          alert("You indicated that you are a native speaker. Please enter the age when you spoke English fluently.");
+          return;
+        } else {
+
+          var partialAnswers = {
+            isNativeSpeaker: isNativeSpeaker,
+            nativeSpeakerAge: nativeSpeakerAge,
+            currentAge: age,
+            gender: gender,
+          };
+
+          Session.set("debriefing", partialAnswers);
+          Router.go("/debriefing2");
+        }
+    }
   }
 });
 
 Template.Debriefing2.events({
   "click .finish-experiment": function (e) {
-    var positive = $('input[name="positive"]:checked').val();
-    var negative = $('input[name="negative"]:checked').val();
-    var unusual = $('textarea[name="unusual"]').val();
-    var guess = $('textarea[name="guess"]').val();
-    var comments = $('textarea[name="comments"]').val();
 
-    var partialAnswers2 = {
-      positive: positive,
-      negative: negative,
-      unusual: unusual,
-      guess: guess,
-      comments: comments
-    };
+    e.preventDefault();
+    
+    var unusual = $('textarea[name="unusual"]').val().trim();
+    var guess = $('textarea[name="guess"]').val().trim();
+    var similarStudy = $('textarea[name="similar_study"]').val().trim();
 
-    debugger
+    if (unusual === "" || guess === "" || similarStudy === "") {
+      alert("Please answer all the questions.");
+      return;
+    } else {
+        var partialAnswers2 = {
+          unusual: unusual,
+          guess: guess,
+          similarStudy: similarStudy
+        };
 
-    var debriefingAnswers = _.extend({}, Session.get("debriefing"), partialAnswers2);
+        debugger
 
-    var compiledResponse = Session.get("response");
-    compiledResponse = _.extend(compiledResponse, {
-      debriefing:debriefingAnswers
-    });
+        var debriefingAnswers = _.extend({}, Session.get("debriefing"), partialAnswers2);
 
-    Meteor.call("addResponse", compiledResponse);
-  }
+        var compiledResponse = Session.get("response");
+        compiledResponse = _.extend(compiledResponse, {
+          debriefing:debriefingAnswers
+        });
+
+        Meteor.call("addResponse", compiledResponse, function(error) {
+          Router.go("/debriefing3");
+        });
+      }
+    }
 });

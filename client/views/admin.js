@@ -58,37 +58,19 @@ window.jsonToCSV = function (JSONData, ReportTitle) {
 Template.Admin.onRendered(function() {
   var emptyRow = {
     username: "",
-    // firstCondition: "",
-    // secondCondition: "",
-    userSaw: "",
-    condition: "",
-    diagnocity: "",
-    isCongruent: "",
+    block: "",
+    target: "",
+    prime: "",
     responseTime: "",
     keyPressed: "",
     isCorrect: "",
-    why1: "",
-    why2: "",
-    why3: "",
-    why4: "",
-    how1: "",
-    how2: "",
-    how3: "",
-    how4: "",
-    // targetDetectionCondition1: "",
-    // targetDetectionCondition2: "",
-    age: "",
-    attention1: "",
-    attention2: "",
-    comments: "",
-    focused1: "",
-    focused2: "",
+    isNativeSpeaker: "",
+    nativeSpeakerAge: "",
+    currentAge: "",
+    gender: "",
     guess: "",
-    motivated: "",
-    negative: "",
-    positive: "",
-    sex: "",
-    unusual: ""
+    unusual: "",
+    similarStudy: "",
   };
 
   this.autorun(function() {
@@ -102,52 +84,18 @@ Template.Admin.onRendered(function() {
         var rowsForThisResponse = [];
         var username = {username: resp.username};
 
-        // firstTargetTaskResults
-        _.each(resp.firstTargetTaskResults, function (result) {
+        // TargetTaskResults
+        _.each(resp.TargetTaskResults, function (result) {
           var row = _.clone(emptyRow);
           _.assign(row, result, username);
           rowsForThisResponse.push(row);
         });
 
-        // secondTargetTaskResults
-        _.each(resp.secondTargetTaskResults, function (result) {
-          var row = _.clone(emptyRow);
-          _.assign(row, result, username);
-          rowsForThisResponse.push(row);
-        });
+        debugger
 
         var infoRow = _.clone(emptyRow);
-        var additionalInfo = {
-          firstCondition: resp.firstCondition,
-          secondCondition: resp.secondCondition,
-          targetDetectionCondition1: resp.targetDetectionCondition1,
-          targetDetectionCondition2: resp.targetDetectionCondition2
-        }
 
-        debugger
-
-        var whyFlattened = {};
-        var howFlattened = {};
-
-        if (resp.whySurveyResponses) {
-          whyFlattened["why1"] = resp.whySurveyResponses[0];
-          whyFlattened["why2"] = resp.whySurveyResponses[1];
-          whyFlattened["why3"] = resp.whySurveyResponses[2];
-          whyFlattened["why4"] = resp.whySurveyResponses[3];
-        }
-
-        debugger
-
-        if (resp.howSurveyResponses) {
-          howFlattened["how1"] = resp.howSurveyResponses[0];
-          howFlattened["how2"] = resp.howSurveyResponses[1];
-          howFlattened["how3"] = resp.howSurveyResponses[2];
-          howFlattened["how4"] = resp.howSurveyResponses[3]; 
-        }
-
-        _.assign(infoRow, additionalInfo, resp.debriefing, whyFlattened, howFlattened, {
-          username: resp.username
-        });
+        _.assign(infoRow, resp.debriefing, username);
 
         debugger
 
@@ -156,33 +104,19 @@ Template.Admin.onRendered(function() {
         rowsForThisResponse = _.map(rowsForThisResponse, function (row) {
           var orderedRow = [
             {username: ""},
-            {condition: ""},
-            {diagnocity: ""},
-            {userSaw: ""},
-            {isCongruent: ""},
+            {block: ""},
+            {target: ""},
+            {prime: ""},
             {responseTime: ""},
             {keyPressed: ""},
             {isCorrect: ""},
-            {why1: ""},
-            {why2: ""},
-            {why3: ""},
-            {why4: ""},
-            {how1: ""},
-            {how2: ""},
-            {how3: ""},
-            {how4: ""},
-            {age: ""},
-            {sex: ""},
-            {attention1: ""},
-            {attention2: ""},
-            {focused1: ""},
-            {focused2: ""},
-            {motivated: ""},
-            {positive: ""},
-            {negative: ""},
-            {unusual: ""},
+            {isNativeSpeaker: ""},
+            {nativeSpeakerAge: ""},
+            {currentAge: ""},
+            {gender: ""},
             {guess: ""},
-            {comments: ""}
+            {unusual: ""},
+            {similarStudy: ""}
           ];
 
           for (key in row) {

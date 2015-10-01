@@ -3,66 +3,33 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 intro-body">
-      Finally we would like to ask you some debriefing questions.
+      <p class="survey-intro">Next, we would like to ask you some questions.</p>
+      <!-- <p class="error">Please answer all of the questions.</p> -->
 
       <div class="form-group">
-        <label>What is your age?</label>
-        <input name="age" type="text" class="form-control short-answer">
+        <label>Are you a native speaker of English?*</label>
+        <div><input name="is_native_speaker" type="radio" value="yes">Yes</div>
+        <div><input name="is_native_speaker" type="radio" value="no">No</div>
       </div>
 
       <div class="form-group">
-        <label>What is your sex?</label>
-        <input name="sex" type="text" class="form-control short-answer">
+        <label>If yes, what age did you speak English fluently?</label>
+        <input name="native_speaker_age" min="0" type="number" class="form-control short-answer">
       </div>
 
       <div class="form-group">
-        <label>How much did you pay attention to the arrow in the center of the screen throughout the task?</label>
-        <div><input name="attention1" type="radio" value="1"> 1 - Not at All</div>
-        <div><input name="attention1" type="radio" value="2"> 2</div>
-        <div><input name="attention1" type="radio" value="3"> 3</div>
-        <div><input name="attention1" type="radio" value="4"> 4</div>
-        <div><input name="attention1" type="radio" value="5"> 5 - Very Much</div>
+        <label>What is your current age?*</label>
+        <input name="age" min="0" type="number" class="form-control short-answer">
       </div>
 
       <div class="form-group">
-        <label>Did you pay attention to the arrow more the first time you completed the object detection task or did you pay attention to the arrow as a cue more the second time you completed the task?”</label>
-        <div><input name="attention2" type="radio" value="1"> 1 – Much more the first time</div>
-        <div><input name="attention2" type="radio" value="2"> 2</div>
-        <div><input name="attention2" type="radio" value="3"> 3</div>
-        <div><input name="attention2" type="radio" value="4"> 4 – Equal</div>
-        <div><input name="attention2" type="radio" value="5"> 5</div>
-        <div><input name="attention2" type="radio" value="6"> 6</div>
-        <div><input name="attention2" type="radio" value="7"> 7 – Much more the second time</div>
+        <label>What is your gender?*</label>
+        <div><input name="gender" type="radio" value="male">Male</div>
+        <div><input name="gender" type="radio" value="female">Female</div>
+        <div><input name="gender" type="radio" value="other">Other</div>
       </div>
 
-      <div class="form-group">
-        <label>How focused were you on the object detection task the first time around?</label>
-        <div><input name="focused1" type="radio" value="1"> 1 - Not at All Focused</div>
-        <div><input name="focused1" type="radio" value="2"> 2</div>
-        <div><input name="focused1" type="radio" value="3"> 3</div>
-        <div><input name="focused1" type="radio" value="4"> 4</div>
-        <div><input name="focused1" type="radio" value="5"> 5 - Extremely Focused</div>
-      </div>
-
-      <div class="form-group">
-        <label>How focused were you on the object detection task the second time around?</label>
-        <div><input name="focused2" type="radio" value="1"> 1 - Not at All Focused</div>
-        <div><input name="focused2" type="radio" value="2"> 2</div>
-        <div><input name="focused2" type="radio" value="3"> 3</div>
-        <div><input name="focused2" type="radio" value="4"> 4</div>
-        <div><input name="focused2" type="radio" value="5"> 5 - Extremely Focused</div>
-      </div>
-
-      <div class="form-group">
-        <label>How motivated were you to perform well during the object detection task?</label>
-        <div><input name="motivated" type="radio" value="1"> 1 - Not At All Motivated</div>
-        <div><input name="motivated" type="radio" value="2"> 2</div>
-        <div><input name="motivated" type="radio" value="3"> 3</div>
-        <div><input name="motivated" type="radio" value="4"> 4</div>
-        <div><input name="motivated" type="radio" value="5"> 5 - Extremely Motivated</div>
-      </div>
-
-      <a href='/debriefing2'><button class="btn btn-default bottom-big go-to-debrief2">Continue</button></a>
+      <a href='#'><button class="btn btn-default bottom-big go-to-debrief2">Continue</button></a>
     </div>
     <div class="col-sm-3"></div>
   </div>
@@ -74,46 +41,29 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 intro-body">
+      
       <div class="form-group">
-        <label>How positive are you feeling right now?</label>
-        <div><input name="positive" type="radio" value="1"> 1 - Not At All Positive</div>
-        <div><input name="positive" type="radio" value="2"> 2</div>
-        <div><input name="positive" type="radio" value="3"> 3</div>
-        <div><input name="positive" type="radio" value="4"> 4</div>
-        <div><input name="positive" type="radio" value="5"> 5 - Extremely Positive</div>
-      </div>
-
-      <div class="form-group">
-        <label>How negative are you feeling right now?</label>
-        <div><input name="negative" type="radio" value="1"> 1 - Not At All Negative</div>
-        <div><input name="negative" type="radio" value="2"> 2</div>
-        <div><input name="negative" type="radio" value="3"> 3</div>
-        <div><input name="negative" type="radio" value="4"> 4</div>
-        <div><input name="negative" type="radio" value="5"> 5 - Extremely Negative</div>
-      </div>
-
-      <div class="form-group">
-        <label>Did anything strange or unusual happen during the experiment?</label>
+        <label>Did anything strange or unusual happen during the experiment?*</label>
         <div>
           <textarea class="form-control" name="unusual" rows="2"></textarea>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Do you have a guess as to what the experiment was about?</label>
+        <label>What do you think this experiment was about?*</label>
         <div>
           <textarea class="form-control" name="guess" rows="2"></textarea>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Please leave any additional comments below:</label>
+        <label>Have you been in a study like this before? If yes, please describe.*</label>
         <div>
-          <textarea class="form-control" name="comments" rows="2"></textarea>
+          <textarea class="form-control" name="similar_study" rows="2"></textarea>
         </div>
       </div>
 
-      <a href='/debriefing3'><button class="btn btn-default btn-primary btn-block finish-experiment">Submit</button></a>
+      <a href='#'><button class="btn btn-default btn-primary btn-block finish-experiment">Submit</button></a>
 
     </div>
     <div class="col-sm-3"></div>

@@ -17,7 +17,7 @@ realTargets = ["cup",
               "cold",
               "clean",
               "wash",
-              "crub",
+              "crut",
               "bath",
               "soap",
               "shower",
@@ -46,7 +46,7 @@ nonsenseTargets = ["ans",
                   "ched",
                   "chig",
                   "chome",
-                  "dath",
+                  "deth",
                   "dod",
                   "dopser",
                   "dut",
@@ -228,8 +228,8 @@ if (Meteor.isClient) {
       TRIALS = shuffle(trials);
 
       // Finally, we are ready to listen to events
-      $(window).on('keyup', function (e) {
-        if (e.keyCode === 68 || e.keyCode === 75) {
+      $(window).keyup(function (e) {
+        if (e.keyCode === 32) {
           $('.target-prepare-container').hide();
           displayTarget();
         }

@@ -3,6 +3,13 @@
 // CONDITION_3 = "HOW_FIRST_HIGH_DIAGNOCITY";
 // CONDITION_4 = "HOW_FIRST_LOW_DIAGNOCITY";
 
+Template.Consent.onRendered(function() {
+  $('.agree_button').click(function (e) {
+      Router.go("/intro1");
+    });
+  });
+
+
 Template.Intro1.onRendered(function() {
   // var coin = Math.random();
   // var condition;
@@ -67,16 +74,19 @@ Template.Intro1.onRendered(function() {
 
   $(window).keyup(function (e) {
       if (e.keyCode === 32) {
-        Router.go("/targettask");
+        $(window).off('keyup');
+        Router.go("/intro2");
       }
     });
 
 });
 
-// Template.Intro2.onRendered(function() {
-//   $(window).keyup(function (e) {
-//     if (e.keyCode === 32) {
-//       Router.go("/targettask");
-//     }
-//   });
-// });
+Template.Intro2.onRendered(function() {
+
+  $(window).on('keyup', function (e) {
+    $(window).off('keyup');
+        if (e.keyCode === 68 || e.keyCode === 75) {
+          Router.go("/targettask");
+        }
+      });
+});

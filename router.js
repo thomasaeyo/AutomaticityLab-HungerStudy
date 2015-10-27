@@ -10,7 +10,19 @@ Router.configure({
 });
 
 Router.route('/', function () {
+  this.render('Consent', {
+    to: 'content'
+  }); // Yield Main template to where {{> yield "content"}} is in layout.html
+});
+
+Router.route('/intro1', function () {
   this.render('Intro1', {
+    to: 'content'
+  }); // Yield Main template to where {{> yield "content"}} is in layout.html
+});
+
+Router.route('/intro2', function () {
+  this.render('Intro2', {
     to: 'content'
   }); // Yield Main template to where {{> yield "content"}} is in layout.html
 });

@@ -156,9 +156,11 @@ if (Meteor.isClient) {
 
               console.log(taskResponse);
 
-              currentTargetTaskResults.push(taskResponse);
-
-              Session.set("currentTargetTaskResults", currentTargetTaskResults);
+              if (trial.correctResponse === "d") {
+                // only record real targets
+                currentTargetTaskResults.push(taskResponse);
+                Session.set("currentTargetTaskResults", currentTargetTaskResults);
+              }
 
               displayTarget();
 

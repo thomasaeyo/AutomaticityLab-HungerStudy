@@ -5,7 +5,7 @@
 
 var BLANK_DELAY = 1000;
 var READY_DELAY = 300;
-var PRIME_DELAY = 150;
+var PRIME_DELAY = 300;
 
 realTargets = ["cup",
               "bottle",

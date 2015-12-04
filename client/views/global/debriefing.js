@@ -4,6 +4,33 @@ Template.Debriefing1.onRendered(function() {
   Helpers.updateResponse({
     TargetTaskResults: TargetTaskResults
   });
+
+  if (!Meteor.user()){
+      Meteor.call("createRandomUser", function (err, userId) {
+        if (err) {
+          console.log(err);
+        } else {
+          var user = Meteor.users.findOne(userId);
+          Meteor.loginWithPassword(user.username, "1234", function (err) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log("logged in as:", Meteor.user().username);
+
+              Helpers.updateResponse({
+                userId: Meteor.userId(),
+                username: Meteor.user().username
+              });
+            }
+          });
+        }
+      });
+    } else {
+      Helpers.updateResponse({
+        userId: Meteor.userId(),
+        username: Meteor.user().username
+      });
+    }
 });
 
 Template.Debriefing1.events({
@@ -36,6 +63,64 @@ Template.Debriefing1.events({
         }
     }
   }
+});
+
+Template.Debriefing2.onRendered(function() {
+  if (!Meteor.user()){
+      Meteor.call("createRandomUser", function (err, userId) {
+        if (err) {
+          console.log(err);
+        } else {
+          var user = Meteor.users.findOne(userId);
+          Meteor.loginWithPassword(user.username, "1234", function (err) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log("logged in as:", Meteor.user().username);
+
+              Helpers.updateResponse({
+                userId: Meteor.userId(),
+                username: Meteor.user().username
+              });
+            }
+          });
+        }
+      });
+    } else {
+      Helpers.updateResponse({
+        userId: Meteor.userId(),
+        username: Meteor.user().username
+      });
+    }
+});
+
+Template.Debriefing3.onRendered(function() {
+  if (!Meteor.user()){
+      Meteor.call("createRandomUser", function (err, userId) {
+        if (err) {
+          console.log(err);
+        } else {
+          var user = Meteor.users.findOne(userId);
+          Meteor.loginWithPassword(user.username, "1234", function (err) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log("logged in as:", Meteor.user().username);
+
+              Helpers.updateResponse({
+                userId: Meteor.userId(),
+                username: Meteor.user().username
+              });
+            }
+          });
+        }
+      });
+    } else {
+      Helpers.updateResponse({
+        userId: Meteor.userId(),
+        username: Meteor.user().username
+      });
+    }
 });
 
 Template.Debriefing2.events({
@@ -71,4 +156,10 @@ Template.Debriefing2.events({
         });
       }
     }
+});
+
+Template.Debriefing3.helpers({
+  usercode: function() {
+        return Meteor.userId(); // is UI.getData() the right choice?
+      }
 });

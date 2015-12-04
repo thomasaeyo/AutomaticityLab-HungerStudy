@@ -4,6 +4,11 @@
 // CONDITION_4 = "HOW_FIRST_LOW_DIAGNOCITY";
 
 Template.Consent.onRendered(function() {
+
+  if (Meteor.user()){
+    Meteor.logout();
+  }
+
   $('.agree_button').click(function (e) {
       Router.go("/intro1");
     });

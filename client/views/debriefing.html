@@ -3,11 +3,58 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 intro-body">
-      <p class="survey-intro">Next, we would like to ask you some questions.</p>
+      <p class="survey-intro">Next, we would like to ask you some questions. Please answer all questions.</p>
       <!-- <p class="error">Please answer all of the questions.</p> -->
 
       <div class="form-group">
-        <label>Are you a native speaker of English?*</label>
+        <label>Please indicate your current mood <br> (1 = negative, 10 positive)</label>
+        <input name="mood" min="1" max="10" type="number" class="form-control short-answer">
+      </div>
+
+      <div class="form-group">
+        <label>How difficult do you find it on average to avoid eating fattening foods? <br> (1 = not at all, 10 = very much)</label>
+        <input name="avoid_fattening" min="1" max="10" type="number" class="form-control short-answer">
+      </div>
+
+      <div class="form-group">
+        <label>How easy is it for you to keep your eating habits healthy? <br>(1 = not at all, 10 = very much)</label>
+        <input name="eating_healthy" min="1" max="10" type="number" class="form-control short-answer">
+      </div>
+
+      <div class="form-group">
+        <label>When was the last time you ate something? Please report how long ago it was in minutes</label>
+        <input name="last_meal" min="0" type="number" class="form-control short-answer">
+      </div>
+
+      <div class="form-group">
+        <label>How hungry are you right now? <br> (1 not at all, 10 very much)</label>
+        <input name="hungry" min="1" max="10" type="number" class="form-control short-answer">
+      </div>
+
+      <div class="form-group">
+        <label>Did you receive instructions to refrain from eating before this study?</label>
+        <div><input name="refrain" type="radio" value="yes">Yes</div>
+        <div><input name="refrain" type="radio" value="no">No</div>
+        <div><input name="refrain" type="radio" value="don't remember">Don't Remeber</div>
+      </div>
+
+      <div class="form-group">
+        <label>Do you have any dietary constraints?</label>
+        <div><input name="has_dietary_constraint" type="radio" value="yes">Yes</div>
+        <div><input name="has_dietary_constraint" type="radio" value="no">No</div>
+      </div>
+
+      <div class="form-group">
+        <label>If yes, I am</label>
+        <div><input name="dietary_constraint" type="checkbox" value="vegetarian">Vegetarian</div>
+        <div><input name="dietary_constraint" type="checkbox" value="lactose-intolerant">Lactose-Intolerant</div>
+        <div><input name="dietary_constraint" type="checkbox" value="gluten-free">Gluten-free</div>
+        <div><input name="dietary_constraint" type="checkbox" value="lactose-intolerant">Lactose-Intolerant</div>
+        <div><input id="dietary_other" name="dietary_constraint" type="checkbox" value="other">Other: <input id="dietary_other_text" name="dietary_other" type="text"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Are you  a native English speaker?</label>
         <div><input name="is_native_speaker" type="radio" value="yes">Yes</div>
         <div><input name="is_native_speaker" type="radio" value="no">No</div>
       </div>
@@ -18,18 +65,25 @@
       </div>
 
       <div class="form-group">
-        <label>What is your current age?*</label>
+        <label>What is your age?</label>
         <input name="age" min="0" type="number" class="form-control short-answer">
       </div>
 
       <div class="form-group">
-        <label>What is your gender?*</label>
+        <label>What is your gender?</label>
         <div><input name="gender" type="radio" value="male">Male</div>
         <div><input name="gender" type="radio" value="female">Female</div>
         <div><input name="gender" type="radio" value="other">Other</div>
       </div>
 
-      <a href='#'><button class="btn btn-default bottom-big go-to-debrief2">Continue</button></a>
+      <div class="form-group">
+        <label>What do you think this experiment was about?</label>
+        <div>
+          <textarea class="form-control" name="thoughts" rows="2"></textarea>
+        </div>
+      </div>
+
+      <a href='#'><button class="btn btn-default bottom-big finish-experiment">Submit</button></a>
     </div>
     <div class="col-sm-3"></div>
   </div>
@@ -37,41 +91,6 @@
 </template>
 
 <template name="Debriefing2">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6 intro-body">
-      
-      <div class="form-group">
-        <label>Did anything strange or unusual happen during the experiment?*</label>
-        <div>
-          <textarea class="form-control" name="unusual" rows="2"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>What do you think this experiment was about?*</label>
-        <div>
-          <textarea class="form-control" name="guess" rows="2"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Have you been in a study like this before? If yes, please describe.*</label>
-        <div>
-          <textarea class="form-control" name="similar_study" rows="2"></textarea>
-        </div>
-      </div>
-
-      <a href='#'><button class="btn btn-default btn-primary btn-block finish-experiment">Submit</button></a>
-
-    </div>
-    <div class="col-sm-3"></div>
-  </div>
-</div>
-</template>
-
-<template name="Debriefing3">
 
 <div class="container-fluid">
   <div class="row">
@@ -80,8 +99,8 @@
       <p>
         <h1 class="center">Thank you for your participation!</h1>
       </p>
-      <p class="center">Please enter the code below in your MTurk HIT to get credit!</p>
-      <p class="center mturk-code">{{usercode}}</p>
+<!--       <p class="center">Please enter the code below in your MTurk HIT to get credit!</p>
+      <p class="center mturk-code">{{usercode}}</p> -->
     </div>
     <div class="col-sm-3"></div>
   </div>

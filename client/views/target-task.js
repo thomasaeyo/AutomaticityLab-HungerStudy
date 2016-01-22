@@ -1,100 +1,189 @@
-// var ARROW_CLOCK_DELAY = 750;
-// var RT_WINDOW_DELAY = 400;
-// var BLANK_DELAY = 1000;
-// var EXPIRE_DELAY = 1500;
+var BLANK_DELAY = 750;
+var FOCUS_DELAY = 300;
+var PRIME_DELAY = 150;
+var MASK_DELAY = 150;
 
-var BLANK_DELAY = 1000;
-var READY_DELAY = 300;
-var PRIME_DELAY = 300;
+prime = [ "burger",
+          "burger",
+          "burger",
+          "cake",
+          "cake",
+          "cake",
+          "chips",
+          "chips",
+          "chips",
+          "chocolate",
+          "chocolate",
+          "chocolate",
+          "steak",
+          "steak",
+          "steak",
+          "burger",
+          "burger",
+          "burger",
+          "cake",
+          "cake",
+          "cake",
+          "chips",
+          "chips",
+          "chips",
+          "chocolate",
+          "chocolate",
+          "chocolate",
+          "steak",
+          "steak",
+          "steak",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm",
+          "zxcvbnm"];
 
-realTargets = ["cup",
-              "bottle",
-              "glass",
-              "faucet",
-              "tap",
-              "liquid",
-              "ice",
-              "cold",
-              "clean",
-              "wash",
-              "scrub",
-              "bath",
-              "soap",
-              "shower",
-              "rinse",
-              "suds",
-              "irrigate",
-              "ocean",
-              "swim",
-              "rain",
-              "river",
-              "flood",
-              "drain",
-              "lake",
-              "town",
-              "camera",
-              "book",
-              "movie",
-              "speaker",
-              "music",
-              "tree",
-              "photo"];
-
-nonsenseTargets = ["ans",
-                  "baps",
-                  "biff",
-                  "ched",
-                  "chig",
-                  "chome",
-                  "deth",
-                  "dod",
-                  "dopser",
-                  "dut",
-                  "fabon",
-                  "fama",
-                  "filltam",
-                  "fom",
-                  "fum",
-                  "gan",
-                  "gog",
-                  "hettop",
-                  "heff",
-                  "jeg",
-                  "jop",
-                  "juff",
-                  "krong",
-                  "lemt",
-                  "lun",
-                  "mab",
-                  "mip",
-                  "mon",
-                  "marrt",
-                  "pude",
-                  "qengs",
-                  "quinle"];
-
-PRACTICE_TRIALS = [
-  {
-    target: "point",
-    prime: "water",
-    correctResponse: "d",
-  },
-  {
-    target: "alfen",
-    prime: "water",
-    correctResponse: "k",
-  },
-  {
-    target: "display",
-    prime: "pencil",
-    correctResponse: "d",
-  },
-  {
-    target: "moem",
-    prime: "pencil",
-    correctResponse: "k",
-  },
-];
+target = ["juicy",
+          "hot",
+          "grilled",
+          "mousse",
+          "butter",
+          "frosting",
+          "salty",
+          "crispy",
+          "crunchy",
+          "rich",
+          "smooth",
+          "sweet",
+          "tender",
+          "sizzling",
+          "juicy",
+          "disk",
+          "round",
+          "brown",
+          "layer",
+          "slice",
+          "platter",
+          "yellow",
+          "wavy",
+          "bag",
+          "brown",
+          "dark",
+          "tan",
+          "brown",
+          "cow",
+          "knife",
+          "juicy",
+          "hot",
+          "grilled",
+          "mousse",
+          "butter",
+          "frosting",
+          "salty",
+          "crispy",
+          "crunchy",
+          "rich",
+          "smooth",
+          "sweet",
+          "tender",
+          "sizzling",
+          "juicy",
+          "disk",
+          "round",
+          "brown",
+          "layer",
+          "slice",
+          "platter",
+          "yellow",
+          "wavy",
+          "bag",
+          "brown",
+          "dark",
+          "tan",
+          "brown",
+          "cow",
+          "knife",
+          "chair",
+          "weather",
+          "sky",
+          "side",
+          "top",
+          "under",
+          "wall",
+          "wood",
+          "plastic",
+          "nail",
+          "green",
+          "quiet",
+          "box",
+          "trees",
+          "degree",
+          "finger",
+          "face",
+          "carpet",
+          "light",
+          "point",
+          "occur",
+          "neutral",
+          "blank",
+          "screen",
+          "watch",
+          "deer",
+          "sign",
+          "way",
+          "paid",
+          "tide"];
 
 if (Meteor.isClient) {
   var _checkIfCorrect = function (keyPressed, correctResponse) {
@@ -105,82 +194,75 @@ if (Meteor.isClient) {
     $(window).off('keyup');
 
     if (TRIALS.length > 0) {
-    // if (PRACTICE_TRIALS.length > 0) {
-      var trial;
-      var blockType;
-
-      if (PRACTICE_TRIALS.length > 0) {
-        trial = PRACTICE_TRIALS.pop();
-        blockType = "PracticeBlock";
-
-      } else {
-        trial = TRIALS.pop();
-        blockType = "Block1";
-      }
+      var trial = TRIALS.pop();
 
       $('.stimuli.target.active').removeClass('active').hide();
       $('.stimuli.target').text(trial.target);
       $('.stimuli.prime').text(trial.prime);
 
+      // FOCUS
       setTimeout(function() {
-
         $('.stimuli.ready').addClass('active').show();
 
+        // PRIME
         setTimeout(function() {
           $('.stimuli.ready.active').removeClass('active').hide();
           $('.stimuli.prime').addClass('active').show();
 
+          // POST-PRIME MASK
           setTimeout(function() {
             $('.stimuli.prime.active').removeClass('active').hide();
-            $('.stimuli.target').addClass('active').show();
+            $('.stimuli.mask').addClass('active').show();
+   
+            // TARGET
+            setTimeout(function() {
+              $('.stimuli.mask.active').removeClass('active').hide();
+              $('.stimuli.target').addClass('active').show();
 
-            var timeStart = Date.now();
-          // wait for the participant's response
-          $(window).on("keyup", function (e) {
-            if (e.keyCode === 68 || e.keyCode === 75) {
-              var timeDiff = Date.now() - timeStart;
+              var timeStart = Date.now();
+              // wait for the participant's response
+              $(window).on("keyup", function (e) {
+                if (e.keyCode === 90 || e.keyCode === 191) {
+                  var timeDiff = Date.now() - timeStart;
 
-              // Store the user response into an array
-              var currentTargetTaskResults = Session.get("currentTargetTaskResults");
+                  // Store the user response into an array
+                  var currentTargetTaskResults = Session.get("currentTargetTaskResults");
 
-              var keyPressed = e.keyCode === 68 ? "d" : "k";
+                  var keyPressed = e.keyCode === 90 ? "z" : "/";
 
-              var taskResponse = {
-                block: blockType,
-                prime: trial.prime,
-                target: trial.target,
-                responseTime: timeDiff,
-                keyPressed: keyPressed,
-                isCorrect: _checkIfCorrect(keyPressed, trial.correctResponse)
-              }
+                  var taskResponse = {
+                    prime: trial.prime,
+                    target: trial.target,
+                    responseTime: timeDiff,
+                    keyPressed: keyPressed,
+                    isCorrect: _checkIfCorrect(keyPressed, trial.correctResponse)
+                  }
 
-              console.log(taskResponse);
+                  console.log(taskResponse);
 
-              if (trial.correctResponse === "d") {
-                // only record real targets
-                currentTargetTaskResults.push(taskResponse);
-                Session.set("currentTargetTaskResults", currentTargetTaskResults);
-              }
+                  currentTargetTaskResults.push(taskResponse);
+                  Session.set("currentTargetTaskResults", currentTargetTaskResults);
 
-              displayTarget();
+                  // recursively display the target
+                  displayTarget(); 
 
-              //deregister the event listener
-              $(window).off("keyup");
-            }
-          });
+                  // deregister the event listener
+                  $(window).off("keyup");
+                }
+              });
+            }, MASK_DELAY);
 
           }, PRIME_DELAY);
 
-        }, READY_DELAY);
+        }, FOCUS_DELAY);
 
       }, BLANK_DELAY);
 
     } else {
-
       Router.go('/debriefing1');
       return;
-  }
-};
+    }
+  };
 
   Template.TargetTask.created = function (e, template) {
     Session.set("numTrials", 0);
@@ -194,7 +276,7 @@ if (Meteor.isClient) {
 
   Template.TargetPrepareTask.rendered = function() {
 
-    if (!Meteor.user()){
+    if (!Meteor.user()) {
       Meteor.call("createRandomUser", function (err, userId) {
         if (err) {
           console.log(err);
@@ -221,47 +303,27 @@ if (Meteor.isClient) {
       });
     }
       
-      Session.set("currentTargetTaskResults", []);
+    Session.set("currentTargetTaskResults", []);
 
-      var trials = [];
-      for (var i = 0; i < realTargets.length; i++) {
-        var trialObj1 = {
-          target: realTargets[i],
-          prime: "water",
-          correctResponse: 'd',
-        };
-        var trialObj2 = {
-          target: realTargets[i],
-          prime: "pencil",
-          correctResponse: 'd',
-        };
-        trials.push(trialObj1);
-        trials.push(trialObj2);
+    var trials = [];
+    for (var i = 0; i < target.length; i++) {
+      var trialObj = {
+        prime: prime[i],
+        target: target[i],
+        correctResponse: '/'
+      };
+      trials.push(trialObj);
+    }
+
+    TRIALS = shuffle(trials);
+    // TRIALS.splice(3);
+
+    // Finally, we are ready to listen to events
+    $(window).keyup(function (e) {
+      if (e.keyCode === 32) {
+        $('.target-prepare-container').hide();
+        displayTarget();
       }
-
-      for (var i = 0; i < nonsenseTargets.length; i++) {
-        var trialObj1 = {
-          target: nonsenseTargets[i],
-          prime: "water",
-          correctResponse: 'k',
-        };
-        var trialObj2 = {
-          target: realTargets[i],
-          prime: "pencil",
-          correctResponse: 'k',
-        };
-        trials.push(trialObj1);
-        trials.push(trialObj2);
-      }
-
-      TRIALS = shuffle(trials);
-
-      // Finally, we are ready to listen to events
-      $(window).keyup(function (e) {
-        if (e.keyCode === 32) {
-          $('.target-prepare-container').hide();
-          displayTarget();
-        }
-      });
-    };
+    });
+  };
 }

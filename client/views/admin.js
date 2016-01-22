@@ -58,24 +58,16 @@ window.jsonToCSV = function (JSONData, ReportTitle) {
 Template.Admin.onRendered(function() {
   var emptyRow = {
     username: "",
-    block: "",
     target: "",
     prime: "",
     responseTime: "",
     keyPressed: "",
     isCorrect: "",
-    isNativeSpeaker: "",
-    nativeSpeakerAge: "",
-    currentAge: "",
-    gender: "",
-    guess: "",
-    unusual: "",
-    similarStudy: "",
   };
 
   this.autorun(function() {
     var responses = Responses.find().fetch();
-
+    console.log(responses);
 
     if (responses.length) {
       // var resp = responses[2];
@@ -104,19 +96,11 @@ Template.Admin.onRendered(function() {
         rowsForThisResponse = _.map(rowsForThisResponse, function (row) {
           var orderedRow = [
             {username: ""},
-            {block: ""},
             {target: ""},
             {prime: ""},
             {responseTime: ""},
             {keyPressed: ""},
-            {isCorrect: ""},
-            {isNativeSpeaker: ""},
-            {nativeSpeakerAge: ""},
-            {currentAge: ""},
-            {gender: ""},
-            {guess: ""},
-            {unusual: ""},
-            {similarStudy: ""}
+            {isCorrect: ""}
           ];
 
           for (key in row) {
@@ -148,7 +132,7 @@ Template.Admin.helpers({
   },
 
   parseResponse: function (response) {
-    return JSON.stringify(response);
+    return JSON.stringify(response, null, 2);
   }
 });
 

@@ -10,32 +10,13 @@ Router.configure({
 });
 
 Router.route('/', function () {
-  this.render('Consent', {
+  this.render('Intro', {
     to: 'content'
   }); // Yield Main template to where {{> yield "content"}} is in layout.html
 });
-
-Router.route('/intro1', function () {
-  this.render('Intro1', {
-    to: 'content'
-  }); // Yield Main template to where {{> yield "content"}} is in layout.html
-});
-
-Router.route('/intro2', function () {
-  this.render('Intro2', {
-    to: 'content'
-  }); // Yield Main template to where {{> yield "content"}} is in layout.html
-});
-
 
 Router.route('/targettask', function () {
   this.render('TargetTask', {
-    to: 'content'
-  });
-});
-
-Router.route('/intermission', function () {
-  this.render('Intermission', {
     to: 'content'
   });
 });
@@ -48,12 +29,6 @@ Router.route('/debriefing1', function () {
 
 Router.route('/debriefing2', function () {
   this.render('Debriefing2', {
-    to: 'content'
-  });
-});
-
-Router.route('/debriefing3', function () {
-  this.render('Debriefing3', {
     to: 'content'
   });
 });
